@@ -4,7 +4,7 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const phone = document.getElementById('phone');
-const date = document.getElementById('dob');
+const dob = document.getElementById('dob');
 
 // show input error message
 function showError(input, message) {
@@ -13,7 +13,7 @@ function showError(input, message) {
   const small = formControl.querySelector('small');
   small.innerText = message;
 }
-
+ 
 // show success message
 function showSuccess(input) {
   formControl = input.parentElement;
@@ -26,7 +26,7 @@ function checkEmail(input) {
   if (re.test(input.value.trim())) {
     showSuccess(input);
   } else {
-    showError(input, 'Enail is not valid');
+    showError(input, 'Please enter a valid email');
   }
 }
 
@@ -44,19 +44,22 @@ function checkRequired(inputArr) {
 //check input lenght
 function checkLength(input, min, max) {
   if (input.value.length < min) {
-    showError(input, `${getFieldName(input)} must be at least ${min} characters`);
+    showError(input,'Please enter valid user name');
   } else if (input.value.length > max) {
-    showError(input, `${getFieldName(input)} must be less than ${max} characters`);
+    showError(input,'Please enter valid user name');
   } else {
     showSuccess(input);
   }
 }
 
+
+
+
 // check passwords match
 
 function checkPasswordsMatch(input1, input2) {
   if (input1.value !== input2.value) {
-    showError(input2, 'Passwords do not match');
+    showError(input2, 'Your passwords do not match. Please try again');
   }
 }
 
@@ -65,9 +68,9 @@ function getFieldName(input) {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 //Check dob
-function onChangDob (executionContext){
+function onChangeDob (executionContext){
     var formContext=executionContext.getFormContext();
-    var birthdate = formContext.getAttribute('date').getValue();
+    var birthdate = formContext.getAttribute('dob').getValue();
     var today = new Date();
     var validMinDate = new Date(
         today.getFullYear()-18,
@@ -80,22 +83,28 @@ function onChangDob (executionContext){
         birthDateFieldControl.setNotification("Minimum Age must be 18 years.","BDATE");
     }
 
-};
-function checkPhone(input){
-    if (input.length != 11){
-        showError(input,'Phone Numbers must be 11 digits only')
+}
+
+function checkPhone(input,min,max){
+  const reg= /^(09|\+639)\d{9}$/;
+    if (reg.test(input.value.trim())){
+      showSuccess(input);
+    }else {
+      showError(input,'Please enter valid number');
+
     }
+        
 }
 
 // Event listeners
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  checkRequired([username, email, date, password, password2]);
+  checkRequired([username, email, password, password2, dob, phone]);
   checkLength(username, 3, 15);
   checkLength(password, 6, 25);
   checkEmail(email);
-  onChangDob(date)
-  checkPhone(phone)
+  onChangeDob(dob);
+  checkPhone(phone, 3, 11);
   checkPasswordsMatch(password, password2);
 });
