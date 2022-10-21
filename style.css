@@ -7,46 +7,21 @@
     font-family: "Poppins";
 }
 
-.LogO{
-    font-family:'Aclonica';
-    font-size: 50px;
-    padding:20px;
-    margin-left: 20px;
-}
-.LogO a{
-    color:whitesmoke;
-    text-decoration: none;
-}
-.nav-bar {
-    font-family: 'poppins';
-    font-size: 20px;
-    float: right;
-    margin-top: 15px;
-    list-style: none;   
-}
-.nav-bar li{
-    display: inline-flex;
-}
-.nav-bar li a{
-    padding: 10px;
-    text-decoration: snow;
-    color: aliceblue;
-    border: 2px solid #fff;
-    transition: 0.6s ease;
-    border-radius: 5px;
-    border-width: auto;    
-}
-ul li a:hover{
-    background-clip: #ffffff;
-    color: black;
-}
 body{
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    
     padding: 30px;
+}
+h1{
+	padding-left:45px;
+	/* padding-top:60px; */
+}
+h2{
+	padding-left:30px;
+    font-size: 20px;
+	
 }
 .container{
     position: relative;
@@ -181,37 +156,6 @@ body{
     transition: all 0.3s ease;
 }
 /* ------------------------------------------------------------------------------- */
-.form-content .form-group input{
-    height: 40px;
-    width: 100%;
-    outline: none;
-    border: none;
-    padding: 0 30px;
-    font-size: 16px;
-    font-weight: 500;
-    border-bottom: 2px solid rgba(206, 33, 33, 0.2);
-    transition: all 0.3s ease;
-}
-.form-group i{
-    position: absolute;
-    color: rgba(206, 33, 33, 0.788);
-    font-size: 17px;
-}
-.form-group .control-label{
-    padding-bottom:100px;
-    padding-left:20px;
-}
-.forms .form-group #label{
-    color:wheat;
-    background:rgba(186, 33, 206, 0.788);
-    border-radius: 6px;
-    padding:0;
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
-.forms .form-group #label:hover{
-    background: rgb(56, 10, 14);
-}
 
 
 .form-content .input-box input:focus,
@@ -254,6 +198,21 @@ body{
 .forms .form-content label{
     color: rgb(226, 17, 69);
     cursor: pointer;
+
+}
+.forms .form-content .textSign label  {
+    color: rgb(226, 17, 69);
+	padding-left:30px;
+    cursor: pointer;
+	background-color: #3498db;
+	border: 2px solid #3498db;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-size: 20px;
+	padding-left: 110px;
+	margin-top: 20px;
+	width: 100%;
 }
 .forms .form-content label:hover{
     text-decoration: underline;
@@ -261,7 +220,7 @@ body{
 .forms .form-content .login-text,
 .forms .form-content .sign-up-text{
     text-align: center;
-    margin-top: 25px;
+    
 }
     .container #flip{
     display: none;
@@ -291,15 +250,6 @@ body{
   --error-color: #e74c3c;
 }
 
-h2 {
-  text-align: center;
-  margin: 0 0 20px;
-}
-
-.form {
-  padding: 30px 40px;
-}
-
 .form-control {
   margin-bottom: 10px;
   padding-bottom: 20px;
@@ -316,7 +266,8 @@ h2 {
   border: 2px solid #f0f0f0;
   border-radius: 4px;
   display: block;
-  width: 100%;
+  width: 90%;
+  height: 40px;
   padding: 10px;
   font-size: 14px;
 }

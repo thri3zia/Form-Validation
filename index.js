@@ -5,6 +5,9 @@ const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const phone = document.getElementById('phone');
 const dob = document.getElementById('dob');
+const logEmail = document.getElementById('logEmail');
+const logPass = document.getElementById('logPass');
+
 
 // show input error message
 function showError(input, message) {
@@ -16,6 +19,8 @@ function showError(input, message) {
  
 // show success message
 function showSuccess(input) {
+  alert("Form Succesfully Submitted");
+  window.location.reload();
   formControl = input.parentElement;
   formControl.className = 'form-control success';
 }
@@ -33,6 +38,7 @@ function checkEmail(input) {
 //check required fields
 function checkRequired(inputArr) {
   inputArr.forEach(function (input) {
+    
     if (input.value.trim() === '') {
       showError(input, `${getFieldName(input)} is required`);
     } else {
@@ -52,6 +58,11 @@ function checkLength(input, min, max) {
   }
 }
 
+// jQuery.validator.addMethod("name_regex", function(value, element) {
+//   return this.optional(element) || /^[a-zA-z\.\-_Jr., Sr., II III]{1,30}$/i.test(value);
+
+// }, "No special characters");
+
 
 
 
@@ -59,7 +70,7 @@ function checkLength(input, min, max) {
 
 function checkPasswordsMatch(input1, input2) {
   if (input1.value !== input2.value) {
-    showError(input2, 'Your passwords do not match. Please try again');
+    showError(input2, 'Passwords do not match');
   }
 }
 
@@ -68,23 +79,30 @@ function getFieldName(input) {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 //Check dob
-function onChangeDob (executionContext){
-    var formContext=executionContext.getFormContext();
-    var birthdate = formContext.getAttribute('dob').getValue();
+  function getAge() {
+  var warningAge = document.getElementById("age");
+  var dateString = document.getElementById("dob").value;
+  if (dateString != "") {
     var today = new Date();
-    var validMinDate = new Date(
-        today.getFullYear()-18,
-        today.getMonth(),
-        today.getDate(),
-        today.getHours(),
-        today.getMinutes());
-    var birthDateFieldControl = formContext.getControl('date');
-    if (birthDateFieldControl){
-        birthDateFieldControl.setNotification("Minimum Age must be 18 years.","BDATE");
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    var da = today.getDate() - birthDate.getDate();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    if (m < 0) {
+      m += 12;
+    }
+    if (da < 0) {
+      da += 30;
     }
 
-}
-
+    if (age < 18) {
+      alert("Only 18 years old and above to create an account.");
+    }
+  } 
+  }
 function checkPhone(input,min,max){
   const reg= /^(09|\+639)\d{9}$/;
     if (reg.test(input.value.trim())){
@@ -100,11 +118,28 @@ function checkPhone(input,min,max){
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
+  if ($('#myCheck').is(':checked')) {
+    //Check if checkbox is checked then show modal
+      $('#myModal').modal('show');
+    }
+
   checkRequired([username, email, password, password2, dob, phone]);
   checkLength(username, 3, 15);
   checkLength(password, 6, 25);
   checkEmail(email);
-  onChangeDob(dob);
+  checkEmail(logEmail);
+  getAge(dob);
   checkPhone(phone, 3, 11);
+  checkLength(logPass, 3, 25);
   checkPasswordsMatch(password, password2);
+});
+
+$('#myForm').on('submit', function(e) {
+  
+  e.preventDefault(); //stop submit
+  
+  if ($('#myCheck').is(':checked')) {
+  //Check if checkbox is checked then show modal
+    $('#myModal').modal('show');
+  }
 });
