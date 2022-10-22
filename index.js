@@ -5,8 +5,7 @@ const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const phone = document.getElementById('phone');
 const dob = document.getElementById('dob');
-const logEmail = document.getElementById('logEmail');
-const logPass = document.getElementById('logPass');
+
 
 
 // show input error message
@@ -19,8 +18,7 @@ function showError(input, message) {
  
 // show success message
 function showSuccess(input) {
-  alert("Form Succesfully Submitted");
-  window.location.reload();
+
   formControl = input.parentElement;
   formControl.className = 'form-control success';
 }
@@ -48,6 +46,14 @@ function checkRequired(inputArr) {
 }
 
 //check input lenght
+function checkLengthPass(input, min) {
+  if (input.value.length < min) {
+    showError(input,'Your password must have 8 characters or more.');
+  } else {
+    showSuccess(input);
+  }
+}
+
 function checkLength(input, min, max) {
   if (input.value.length < min) {
     showError(input,'Please enter valid user name');
@@ -58,13 +64,14 @@ function checkLength(input, min, max) {
   }
 }
 
-// jQuery.validator.addMethod("name_regex", function(value, element) {
-//   return this.optional(element) || /^[a-zA-z\.\-_Jr., Sr., II III]{1,30}$/i.test(value);
-
-// }, "No special characters");
-
-
-
+function checkName(input){
+  const reg = /^[a-zA-z\.\-_Jr., Sr., II III]{1,30}$/i;
+  if (reg.test(input.test(value).trim())) {
+    showSuccess(input);
+  } else {
+    showError(input, 'Please enter a valid name');
+  }
+}
 
 // check passwords match
 
@@ -99,47 +106,28 @@ function getFieldName(input) {
     }
 
     if (age < 18) {
-      alert("Only 18 years old and above to create an account.");
-    }
-  } 
-  }
-function checkPhone(input,min,max){
-  const reg= /^(09|\+639)\d{9}$/;
-    if (reg.test(input.value.trim())){
-      showSuccess(input);
+      showSuccess(input,"Only 18 years old and above to create an account.");
     }else {
       showError(input,'Please enter valid number');
-
+    } 
     }
-        
-}
+    }
 
 // Event listeners
 form.addEventListener('submit', function (e) {
   e.preventDefault();
-
-  if ($('#myCheck').is(':checked')) {
-    //Check if checkbox is checked then show modal
-      $('#myModal').modal('show');
-    }
-
   checkRequired([username, email, password, password2, dob, phone]);
   checkLength(username, 3, 15);
-  checkLength(password, 6, 25);
+  checkName(username);
+  checkLengthPass(password, 6);
   checkEmail(email);
   checkEmail(logEmail);
   getAge(dob);
   checkPhone(phone, 3, 11);
   checkLength(logPass, 3, 25);
   checkPasswordsMatch(password, password2);
+
 });
 
-$('#myForm').on('submit', function(e) {
-  
-  e.preventDefault(); //stop submit
-  
-  if ($('#myCheck').is(':checked')) {
-  //Check if checkbox is checked then show modal
-    $('#myModal').modal('show');
-  }
-});
+
+
