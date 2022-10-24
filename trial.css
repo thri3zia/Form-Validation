@@ -1,0 +1,376 @@
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+h1{
+	padding-left:45px;
+	/* padding-top:60px; */
+}
+h2{
+	padding-left:30px;
+    font-size: 20px;
+	
+}
+.container{
+    position: relative;
+    max-width: 850px;
+    width:100%;
+    background: blanchedalmond;
+    padding: 40px 30px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    perspective: 2700px;
+}
+.container .cover{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 50%;
+    z-index: 98;
+    transition: all 1s ease;
+    transform-origin: left;
+    transform-style: preserve-3d;
+}
+.container #flip:checked ~ .cover{
+    transform: rotateY(-180deg);
+}
+.container .cover .front,
+.container .cover .back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+.cover .back{
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    }
+.container .cover::before,
+.container .cover::after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background:  blanchedalmond;
+    opacity: 0.5;
+    z-index: 12;
+}
+.container .cover::after{
+    opacity: 0.3;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+.container .cover img{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 10;
+}
+.container .cover .text{
+    position: absolute;
+    z-index: 130;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cover .text .text-1,
+.cover .text .text-2{
+    font-size: 26px;
+    font-weight: 600;
+    color:rgb(41, 17, 17);
+    text-align: center;
+}
+.cover .text .text-2{
+    font-size: 15px;
+    font-weight: 500;
+}
+.container .forms{
+    height: 100%;
+    width: 100%;
+    background: blanchedalmond;
+}
+.container .form-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form-content .login-form,
+.form-content .signup-form{
+    width: calc(100% / 2 - 25px);
+}
+.forms .form-content .title{
+    position: relative;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+}
+.forms .form-content .title:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 25px;
+    background: blanchedalmond;
+}
+.forms .signup-form  .title:before{
+    width: 20px;
+}
+.forms .form-content .input-boxes{
+    margin-top: 30px;
+}
+.forms .form-content .input-box{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+}
+.form-content .input-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 2px solid rgba(206, 33, 33, 0.2);
+    transition: all 0.3s ease;
+}
+/* ------------------------------------------------------------------------------- */
+
+
+.form-content .input-box input:focus,
+.form-content .input-box input:valid{
+    border-color: wheat;
+}
+.form-content .input-box i{
+    position: absolute;
+    color: rgba(206, 33, 33, 0.788);
+    font-size: 17px;
+}
+.forms .form-content .text{
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+.forms .form-content .text a{
+    text-decoration: none;
+    color: rgb(226, 17, 69);
+}
+.forms .form-content .text a:hover{
+    text-decoration: underline;
+}
+.forms .form-content .button{
+    color: #fff;
+    margin-top: 40px;
+}
+
+.forms .form-content .button input{
+    color:wheat;
+    background:rgba(186, 33, 206, 0.788);
+    border-radius: 6px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.forms .form-content .button input:hover{
+    background: rgb(56, 10, 14);
+}
+.forms .form-content label{
+    color: rgb(226, 17, 69);
+    cursor: pointer;
+
+}
+.forms .form-content .textSign label  {
+    color: rgb(226, 17, 69);
+	padding-left:30px;
+    cursor: pointer;
+	background-color: #3498db;
+	border: 2px solid #3498db;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-size: 20px;
+	padding-left: 110px;
+	margin-top: 20px;
+	width: 100%;
+}
+.forms .form-content label:hover{
+    text-decoration: underline;
+}
+.forms .form-content .login-text,
+.forms .form-content .sign-up-text{
+    text-align: center;
+    
+}
+    .container #flip{
+    display: none;
+}
+@media (max-width: 730px) {
+    .container .cover{
+        display: none;
+}
+    .form-content .login-form,
+    .form-content .signup-form{
+        width: 100%;
+    }
+    .form-content .signup-form{
+        display: none;
+    }
+    .container #flip:checked ~ .forms .signup-form{
+        display: block;
+    }
+    .container #flip:checked ~ .forms .login-form{
+        display: none;
+    }
+}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&dispay=swap');
+
+:root {
+  --success-color: #23cc71;
+  --error-color: #e74c3c;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.form-control label {
+  color: #777;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  width: 90%;
+  height: 40px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.form-control input:focus {
+  outline: 0;
+  border-color: #777;
+}
+
+.form-control.success input {
+  border-color: var(--success-color);
+}
+
+.form-control.error input {
+  border-color: var(--error-color);
+}
+
+.form-control small {
+  color: var(--error-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.form-control.error small {
+  visibility: visible;
+}
+
+.form button {
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+form .field {
+    margin-bottom: 20px;
+  }
+  form .input-field {
+    position: relative;
+    height: 55px;
+    width: 100%;
+  }
+  .input-field input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0 15px;
+    border: 1px solid #d1d1d1;
+  }
+  .invalid input {
+    border-color: #d93025;
+  }
+  .input-field .show-hide {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #919191;
+    cursor: pointer;
+    padding: 3px;
+  }
+  .field .error {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    color: #d93025;
+    font-size: 13px;
+    display: none;
+  }
+  .invalid .error {
+    display: flex;
+  }
+  .error .error-icon {
+    margin-right: 6px;
+    font-size: 15px;
+  }
+  .create-password .error {
+    align-items: flex-start;
+  }
+  .create-password .error-icon {
+    margin-top: 4px;
+  }
+  .button {
+    margin: 25px 0 6px;
+  }
+  .button input {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #4070f4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .button input:hover {
+    background-color: #0e4bf1;
+  }
