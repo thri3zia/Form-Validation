@@ -302,7 +302,7 @@ h2{
   background-color: #3498db;
   border: 2px solid #3498db;
   border-radius: 4px;
-  color: #fff;
+  color: rgb(15, 7, 7);
   display: block;
   font-size: 16px;
   padding: 10px;
@@ -335,9 +335,9 @@ form .field {
     top: 50%;
     transform: translateY(-50%);
     font-size: 18px;
-    color: #919191;
+    display: inline;
     cursor: pointer;
-    padding: 3px;
+    padding: 13px;
   }
   .field .error {
     display: flex;
