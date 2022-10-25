@@ -3,24 +3,22 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="men.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="jquery.min.js"></script>
-  
     
 </head>
 
-<body>
+<body> 
 
   <div class="container">
     <input type="checkbox" id="flip">
@@ -44,266 +42,133 @@
     <div class="forms">
       <div class="form-content">
         <div class="login-form">
-          <div class="title">Login</div>
+         <h1>HAVE FUN WITH US!</h1> 
+         <h1>Let us get you ready</h1>
 
-
-          <form action="#">
-            <div class="input-boxes">
-
-              <!-- Text input-->
-              <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email">
-              </div>
-              <!-- Text input-->
-
-              <!-- Text input-->
-              <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password">
-              </div>
-              <!-- Text input-->
-
-
-              <div class="text"><a href="#">Forgot password?</a></div>
-              <div class="button input-box">
-                  <input type="submit" value="Sumbit">
-              </div>
-
-              </a>
-              <div class="text sign-up-text">Don't have an account? <label for="flip">Sign Up now</label></div>
-            </div>
-          </form>
+          <div class="textSign"><label for="flip">SIGN UP NOW</label></div>
 
         </div>
+
         <div class="signup-form">
           <div class="title">Signup</div>
-
-
           <!-- ------------------------------------------------------------------------------------------------------------------------ -->
 
-          <form class="form-horizontal" action=" " method="post"  id="reg_form">
-            <div class="input-boxes">
-            
-              <!-- Text input-->
-              
-              <div class="form-group">
-                <i class="fas fa-user"></i>
-                <label class="control-label" >First Name</label>
-                    <input  name="first_name" placeholder="Enter your First Name" class="form-control"  type="text">
+            <form id="myForm">
+
+              <div class="field nam-field">
+                <div class="input-field">
+                  <input type="name" placeholder="Enter your name" class="name" />
+                </div>
+                <span class="error name-error">
+                  <i class="bx bx-error-circle error-icon"></i>
+                  <p class="error-text">Please enter a valid name</p>
+                </span>
+          </div>
+
+              <div class="field email-field">
+                <div class="input-field">
+                  <input type="email" placeholder="Enter your email" class="email" />
+                </div>
+                <span class="error email-error">
+                  <i class="bx bx-error-circle error-icon"></i>
+                  <p class="error-text">Please enter a valid email</p>
+                </span>
               </div>
-              
-              <!-- Text input-->
-              
-              <div class="form-group">
-                <i class="fas fa-user"></i>
-                <label class="control-label" >Last Name</label>
-                    <input name="last_name" placeholder="Enter your Last Name" class="form-control"  type="text">   
-              </div>
-              
-            
-              <!-- Text input-->
-              
-              <div class="form-group">
-                <i class="fa-solid fa-phone"></i>
-                <label class="control-label">Phone</label>
-                <div class="col-md-6  inputGroupContainer">
-                  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input name="phone" placeholder="e.x 09xxx" class="form-control" type="text">
+
+            <div class="field phone-field">
+                  <div class="input-field">
+                    <input type="number" placeholder="Enter your phone number" class="phone" />
                   </div>
+                  <span class="error phone-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    <p class="error-text">Please enter a valid number</p>
+                  </span>
+            </div>
+
+            <div class="field date-field">
+                <div class="input-field">
+                  <input type="date" placeholder="Enter your birthdate" class="date" onchange="validateAge(this)" />
                 </div>
-              </div>
+                <span class="error date-error">
+                  <i class="bx bx-error-circle error-icon"></i>
+                  <p class="error-text"> “You must be 18 years old and above to create an account”</p>
+                </span>
+            </div>
             
-                <!-- Text input-->
-              <div class="form-group">
-                <i class="fa-solid fa-envelope"></i>
-                <label class="control-label">E-Mail</label>
-                <div class="col-md-6  inputGroupContainer">
-                  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <input name="email" placeholder="Enter your E-Mail Address" class="form-control"  type="text">
-                  </div>
+
+              <div class="field create-password">
+                <div class="input-field">
+                  <input
+                    type="password"
+                    placeholder="Create password"
+                    class="password"/>
+                  <i class="bx bx-hide show-hide"></i>
                 </div>
+                <span class="error password-error">
+                  <i class="bx bx-error-circle error-icon"></i>
+                  <p class="error-text">
+                    Please enter atleast 8 charatcer with number, symbol, small and
+                    capital letter.
+                  </p>
+                </span>
               </div>
+
+              <div class="field confirm-password">
+                <div class="input-field">
+                  <input
+                    type="password"
+                    placeholder="Confirm password"
+                    class="cPassword"/>
+                  <i class="bx bx-hide show-hide"></i>
+                </div>
+                <span class="error cPassword-error">
+                  <i class="bx bx-error-circle error-icon"></i>
+                  <p class="error-text">Your passwords do not match. Please try again</p>
+                </span>
+              </div>
+              <div class="input-field button">
+                <input type="submit" value="Submit Now" />
+              </div>
+            </form>
+
+
+            <div class="text sign-up-text">Go Back to front? <label for="flip">Click here</label></div>
+            
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
               
-            
-                <div class="form-group has-feedback">
-                  <i class="fa-solid fa-lock"></i>
-                    <label for="password"  class="control-label">Password</label>
-                        <div class="col-md-6  inputGroupContainer">
-                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input class="form-control" id="userPw" type="password" placeholder="Enter your Password" 
-                               name="password" data-minLength="5"
-                               data-error="some error"
-                               required/>
-                        <span class="glyphicon form-control-feedback"></span>
-                        <span class="help-block with-errors"></span>
-                        </div>
-                     </div>
-                </div>
-             
-                <div class="form-group has-feedback">
-                  <i class="fa-solid fa-key"></i>
-                    <label for="confirmPassword"  class="control-label">Confirm Password</label>
-                         <div class="col-md-6  inputGroupContainer">
-                        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input class="form-control {$borderColor}" id="userPw2" type="password" placeholder="Retype password" 
-                               name="confirmPassword" data-match="#confirmPassword" data-minLength="5"
-                               data-match-error="some error 2"
-                               required/>
-                        <span class="glyphicon form-control-feedback"></span>
-                        <span class="help-block with-errors"></span>
-                     </div>
-                     </div>
-                </div>
-             
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">CONGRATULATIONS!!!</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>ACCOUNT CREATED SUCCESSFULLY! HAVE FUN !!</p>
+                  </div>
           
-              <!-- Button -->
-              <div class="form-group">
-                  <input type="submit" id="label" value="Sumbit">
+                </div>
+                
               </div>
-       
-            <div class="text sign-up-text">Already have an account? <label for="flip">Log In now</label></div>
+            </div>
+
+
           </div>
           </form>
-      
-
-        
 
         </div>
       </div>
     </div>
+</div>
+
+
 
 
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 
-<script src="js/index.js"></script>
-<script type="text/javascript">
-
-$(document).ready(function() {
-    $('#reg_form').bootstrapValidator({
-        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-          
-            first_name: {
-              
-                validators: {
-                        stringLength: {
-                        min: 1, 
-                    },
-                        regexp: {
-                        regexp: nospecial,
-                        message: 'No special characters please'
-                    },
-                        notEmpty: {
-                        message: 'Please supply your first name'
-                    }
-                }
-            },
-            last_name: {
-                validators: {
-                        stringLength: {
-                        min: 2,
-                    },
-                        notEmpty: {
-                        message: 'Please supply your last name'
-                    }
-                }
-            },
-            phone: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please supply your phone number'
-                    },
-                    // phone: {
-                    //     country: 'US',
-                    //     message: 'Please supply a vaild phone number with area code'
-                    // }
-                }
-            },
-            address: {
-                validators: {
-                     stringLength: {
-                        min: 8,
-                    },
-                    notEmpty: {
-                        message: 'Please supply your street address'
-                    }
-                }
-            },
-	 email: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please supply your email address'
-                    },
-                    emailAddress: {
-                        message: 'Please supply a valid email address'
-                    }
-                }
-            },
-					
-	password: {
-            validators: {
-                identical: {
-                    field: 'confirmPassword',
-                    message: 'Confirm your password below - type same password please'
-                }
-            }
-        },
-        confirmPassword: {
-            validators: {
-                identical: {
-                    field: 'password',
-                    message: 'The password and its confirm are not the same'
-                }
-            }
-         },
-			
-            
-            }
-        })
-		
- 	
-        .on('success.form.bv', function(e) {
-            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                $('#reg_form').data('bootstrapValidator').resetForm();
-
-            // Prevent form submission
-            e.preventDefault();
-
-            // Get the form instance
-            var $form = $(e.target);
-
-            // Get the BootstrapValidator instance
-            var bv = $form.data('bootstrapValidator');
-
-            // Use Ajax to submit form data
-            $.post($form.attr('action'), $form.serialize(), function(result) {
-                console.log(result);
-            }, 'json');
-        });
-});
-
-
- 
- </script>
-    
-    </div>
-
-          
-            
-          </div> 
-        </div>
-      </div>
-    </div>
-    </div>
-</div>
+<script src="index.js"></script>
 
 </body>
 
